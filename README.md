@@ -27,7 +27,7 @@ One process will create task messages. Multiple worker processes will share the 
 
     After fixing the pika error, I was able to run the program. However, I kept getting a connectivity error telling me that it refused to connect. After reading the article Zach posted, I understood that I had downloaded the materials incorrectly; I didn't install the programs as an administrator. I fixed the problem by following the instructions on the article and ensuring I was installing as an administrator. You can do this by right-clicking on the downloaded program and selecting "run as administrator". See screenshot below:
 
-        ![Troubleshooting Screenshot](./troubleshooting screenshot.jpg)
+![Troubleshooting Screenshot](./troubleshooting screenshot.jpg)
 
 ## Execute a Consumer / Worker
 
