@@ -1,0 +1,17 @@
+2023-09-13 17:14:56,855.v3_emitter_of_tasks.INFO ==================================================
+2023-09-13 17:14:56,855.v3_emitter_of_tasks.INFO Today is 2023-09-13 at 05:14 PM
+2023-09-13 17:14:56,855.v3_emitter_of_tasks.INFO Running on: nt Windows 10
+2023-09-13 17:14:56,856.v3_emitter_of_tasks.INFO Python version:  3.9.18
+2023-09-13 17:14:56,856.v3_emitter_of_tasks.INFO Python path: C:\Users\actea\miniconda3
+2023-09-13 17:14:56,857.v3_emitter_of_tasks.INFO Working dir: C:\Users\actea\Documents\Streaming Data\Module 4\StreamingData_Mod_4
+2023-09-13 17:14:56,858.v3_emitter_of_tasks.INFO ==================================================
+2023-09-13 17:14:57,153.v3_emitter_of_tasks.INFO Sent: First task.... to RabbitMQ.
+2023-09-13 17:14:57,182.v3_emitter_of_tasks.INFO Sent: Second task...... to RabbitMQ.
+2023-09-13 17:14:57,228.v3_emitter_of_tasks.INFO Sent: Third task..... to RabbitMQ.
+2023-09-13 17:14:57,296.v3_emitter_of_tasks.INFO Sent: Forth task.... to RabbitMQ.
+2023-09-13 17:14:57,340.v3_emitter_of_tasks.INFO Sent: Fifth task...... to RabbitMQ.
+2023-09-13 17:14:57,373.v3_emitter_of_tasks.INFO Sent: Sixth task... to RabbitMQ.
+2023-09-13 17:14:57,414.v3_emitter_of_tasks.INFO Sent: Seventh task.... to RabbitMQ.
+2023-09-13 17:14:57,446.v3_emitter_of_tasks.INFO Sent: Eight task............ to RabbitMQ.
+2023-09-13 17:14:57,479.v3_emitter_of_tasks.INFO Sent: Ninth task..... to RabbitMQ.
+2023-09-13 17:14:57,509.v3_emitter_of_tasks.INFO Sent: Tenth task...... to RabbitMQ.

@@ -1,6 +1,5 @@
 """
-    This program sends a message to a queue on the RabbitMQ server.
-    Make tasks harder/longer-running by adding dots at the end of the message.
+    This program sends a message from a .csv to a queue on the RabbitMQ server. 
 
     Author: Amelia Teare
     Date: September 13, 2023
@@ -10,15 +9,31 @@
 import pika
 import sys
 import webbrowser
+"changes the print statements to logging"
+from util_logger import setup_logger
+import csv
+import time
+import logging
 
+logger, logname = setup_logger(__file__)
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+HOST = "localhost"
+PORT = 9999
+ADDRESS_TUPLE = (HOST, PORT)
+FILE_NAME_TASKS = "tasks.csv"
+SHOW_OFFER = True # By selecting True, you are ensuring that the admin website automatically opens. To turn this feature off, type "FALSE"
+
+#Changed the custom formula below to automatically open the Admin Website when SHOW_OFFER is True.
 def offer_rabbitmq_admin_site():
     """Offer to open the RabbitMQ Admin website"""
-    ans = input("Would you like to monitor RabbitMQ queues? y or n ")
-    print()
-    if ans.lower() == "y":
+    global SHOW_OFFER
+    if SHOW_OFFER:
         webbrowser.open_new("http://localhost:15672/#/queues")
         print()
 
+#No Changes were made to the custom formula below. 
 def send_message(host: str, queue_name: str, message: str):
     """
     Creates and sends a message to the queue each execution.
@@ -52,6 +67,16 @@ def send_message(host: str, queue_name: str, message: str):
         # close the connection to the server
         conn.close()
 
+#Allows you to read from the .csv file selected rather than individually putting in messages or tasks.
+def read_from_file(file_name):
+    tasks = []
+    with open(file_name, "r") as input_file:
+        reader = csv.reader(input_file)
+        for row in reader:
+            if row:
+                tasks.append(row[0])
+    return tasks
+
 # Standard Python idiom to indicate main program entry point
 # This allows us to import this module and use its functions
 # without executing the code below.
@@ -59,10 +84,10 @@ def send_message(host: str, queue_name: str, message: str):
 if __name__ == "__main__":  
     # ask the user if they'd like to open the RabbitMQ Admin site
     offer_rabbitmq_admin_site()
-    # get the message from the command line
-    # if no arguments are provided, use the default message
-    # use the join method to convert the list of arguments into a string
-    # join by the space character inside the quotes
-    message = " ".join(sys.argv[1:]) or "Second task.........."
-    # send the message to the queue
-    send_message("localhost","task_queue2",message)
+   
+    # get the tasks from the csv file using the custom function
+    tasks = read_from_file(FILE_NAME_TASKS)
+
+    for task in tasks:
+        send_message("localhost", "task_queue3", task)
+        logger.info(f"Sent: {task} to RabbitMQ.")

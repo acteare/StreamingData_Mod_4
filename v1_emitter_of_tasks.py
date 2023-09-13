@@ -15,19 +15,20 @@ import pika
 import sys
 import webbrowser
 
+
 def offer_rabbitmq_admin_site():
     """Offer to open the RabbitMQ Admin website"""
     ans = input("Would you like to monitor RabbitMQ queues? y or n ")
     print()
     if ans.lower() == "y":
-        webbrowser.open_new("http://localhost:15672/#/queues")
+        webbrowser.open_new("http://LOCALHOST:15672/#/queues")
         print()
 
 # call the function defined above
 offer_rabbitmq_admin_site()
 
 # create a blocking connection to the RabbitMQ server
-connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost"))
+connection = pika.BlockingConnection(pika.ConnectionParameters(host="LOCALHOST"))
 # use the connection to create a communication channel
 channel = connection.channel()
 # use the channel to declare a durable queue
@@ -36,7 +37,7 @@ channel = connection.channel()
 # messages will not be deleted until the consumer acknowledges
 channel.queue_declare(queue="task_queue", durable=True)
 # create a message by joining the command line arguments
-message = " ".join(sys.argv[1:]) or "First task..."
+message = " ".join(sys.argv[1:]) or "First task............"
 # publish the message to the queue
 channel.basic_publish(
     exchange="",
